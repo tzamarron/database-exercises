@@ -10,4 +10,4 @@ SELECT * FROM albums WHERE genre LIKE 'disco';
 
 -- Albums by 'Whitney Houston' (...or maybe an artist of your choice)
 SELECT 'Albums by The Eagles' AS '';
-SELECT * FROM albums WHERE artist = 'The Eagles';
+SELECT * FROM albums WHERE artist = 'Eagles';
