@@ -48,16 +48,8 @@ FROM titles AS t
 JOIN employees AS e ON t.emp_no = e.emp_no
 JOIN dept_emp AS de ON e.emp_no = de.emp_no
 JOIN departments AS d ON de.dept_no = d.dept_no
-WHERE t.to_date = '9999-01-01' AND d.dept_no = 'd009'
+WHERE t.to_date = '9999-01-01' AND d.dept_no = 'd009' AND de.to_date = '9999-01-01'
 GROUP By t.title;
-
-SELECT t.title AS Title, e.first_name, e.last_name
-FROM titles AS t
-JOIN employees AS e ON t.emp_no = e.emp_no
-JOIN dept_emp AS de ON e.emp_no = de.emp_no
-JOIN departments AS d ON de.dept_no = d.dept_no
-WHERE t.to_date = '9999-01-01' AND d.dept_no = 'd009' AND t.title = 'Senior Staff';
-
 
 # Find the current salary of all current managers.
 # Department Name    | Name              | Salary
