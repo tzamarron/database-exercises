@@ -16,8 +16,8 @@ SELECT d.dept_name AS 'Department Name', CONCAT(e.first_name, ' ', e.last_name) 
 FROM departments AS d
 JOIN dept_manager AS dm ON d.dept_no = dm.dept_no
 JOIN employees AS e ON e.emp_no = dm.emp_no
-WHERE dm.to_date = '9999-01-01'
-GROUP BY d.dept_name,CONCAT(e.first_name, ' ', e.last_name);
+WHERE dm.to_date = '9999-01-01' # or dm.to_date > CURDATE()
+ORDER BY d.dept_name;
 
 # Find the name of all departments currently managed by women.
 # Department Name | Manager Name
@@ -31,7 +31,7 @@ FROM departments AS d
 JOIN dept_manager AS dm ON d.dept_no = dm.dept_no
 JOIN employees AS e ON dm.emp_no = e.emp_no
 WHERE dm.to_date = '9999-01-01' and e.gender = 'F'
-GROUP BY d.dept_name, CONCAT(e.first_name,' ', e.last_name);
+ORDER BY d.dept_name;
 
 # Find the current titles of employees currently working in the Customer Service department.
 # Title              | Count
@@ -69,9 +69,11 @@ JOIN dept_manager AS dm ON d.dept_no = dm.dept_no
 JOIN employees AS e ON dm.emp_no = e.emp_no
 JOIN salaries AS s ON s.emp_no = e.emp_no
 WHERE dm.to_date = '9999-01-01' AND s.to_date = '9999-01-01'
-GROUP BY d.dept_name, CONCAT(e.first_name,' ', e.last_name), s.salary;
+ORDER BY d.dept_name;
 
-# Bonus Find the names of all current employees, their department name, and their current manager's name.
+# Bonus
+#
+# Find the names of all current employees, their department name, and their current manager's name.
 #     240,124 Rows
 #     Employee Name | Department Name  |  Manager Name
 #     --------------|------------------|-----------------
