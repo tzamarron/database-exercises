@@ -67,3 +67,4 @@ WHERE emp_no IN (
         SELECT MAX(salary) FROM salaries
         )
 );
+
